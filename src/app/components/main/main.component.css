@@ -1,0 +1,16 @@
+.block {
+  display: inline-block;
+  width: 100px;
+  height: 150px;
+  padding: 5px;
+  border: 1px solid #3a5dff;
+  background-color: #85d6ff;
+  border-collapse: separate;
+  border-spacing: 15px;
+  margin: 5px;
+
+}
+
+th {
+  /*float: left;*/
+}

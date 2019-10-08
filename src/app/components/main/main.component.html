@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="input-group mb-3">
+    <mat-form-field>
+      <input type="text" matInput [(ngModel)]="cityName" [formControl]="myControl" [matAutocomplete]="auto">
+    </mat-form-field>
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFunc()">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" (click)="search()">search</button>
+    </div>
+  </div>
+  <h1>{{arrOfDayAndTemp[0].cityName}}</h1>
+  <h2>The current weather is: {{currentTemp}} </h2>
+  <div style="overflow-x:auto;">
+    <table>
+      <tr>
+        <th *ngFor="let dayandtemp of arrOfDayAndTemp">
+          <div class="block"> {{dayandtemp.day}}
+            <br>{{dayandtemp.temp + '&deg;C'}}
+            <br>
+            <br>{{dayandtemp.iconPhrase}}
+          </div>
+        </th>
+      </tr>
+    </table>
+  </div>
+    <button type="button" class="btn btn-primary btn-lg" (click)="addToFavorites(cityName)">
+      {{ favoriteExists === true ? 'remove from favorites' : 'add to favorties' }}</button>
+</div>
+
+
