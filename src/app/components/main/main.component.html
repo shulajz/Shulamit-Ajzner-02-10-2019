@@ -3,7 +3,7 @@
     <mat-form-field>
       <input type="text" matInput [(ngModel)]="cityName" [formControl]="myControl" [matAutocomplete]="auto">
     </mat-form-field>
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFunc()">
+    <mat-autocomplete #auto="matAutocomplete" >
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
         {{option}}
       </mat-option>

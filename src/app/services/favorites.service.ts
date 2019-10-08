@@ -7,7 +7,7 @@ import {DayWeather} from '../models/dayWeather';
 export class FavoritesService {
 
   constructor() { }
-  private arrOfFavorites: Location[] = [];
+  public arrOfFavorites: Location[] = [];
   favoriteExists = false;
 
 

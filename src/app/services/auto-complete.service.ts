@@ -15,14 +15,14 @@ export class AutoCompleteService {
   apiKey = 'G25DGfAiQWANcDJXD8b8LhpqsksMFVXG';
 
   async getAutoCompletedDaysOptions(letters) {
-    if (letters === null) {
-      const obj: any = await this.http.get(this.autoCompleteUrl + letters + '&language=en-us').toPromise();
-      const arrOfAutoCompletedCities = [];
-      for (let i = 0; i < Object.keys(obj).length; i++) {
-        arrOfAutoCompletedCities.push(obj[i].LocalizedName);
-      }
-      return arrOfAutoCompletedCities;
-    }
+    // if (letters === null) {
+    //   const obj: any = await this.http.get(this.autoCompleteUrl + letters + '&language=en-us').toPromise();
+    //   const arrOfAutoCompletedCities = [];
+    //   for (let i = 0; i < Object.keys(obj).length; i++) {
+    //     arrOfAutoCompletedCities.push(obj[i].LocalizedName);
+    //   }
+    //   return arrOfAutoCompletedCities;
+    // }
 
   }
 }

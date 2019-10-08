@@ -18,9 +18,9 @@ export class MainComponent implements OnInit {
               private autoCompleteService: AutoCompleteService) {
   }
   myControl: FormControl = new FormControl();
-  filteredOptions: Observable<string[]>;
+  filteredOptions: Observable<Promise<void>>;
   arrOfDayAndTemp: DayWeather[];
-  options: string[];
+  options: any;
   cityName: any;
   currentTemp: any;
   favoriteExists: boolean;
@@ -36,14 +36,15 @@ export class MainComponent implements OnInit {
       );
     // localStorage.clear();
     this.favoriteExists = this.favoritesService.getBooleanOfFavoriteExists();
-    const IDcity = await this.weatherService.getCityApiKey(this.cityName);
-    this.currentTemp = await this.weatherService.getCurrentTemp(328328);
-    this.arrOfDayAndTemp = await this.weatherService.getFiveDaysForecast(IDcity, this.cityName);
+    // const IDcity = await this.weatherService.getCityApiKey(this.cityName);
+    // this.currentTemp = await this.weatherService.getCurrentTemp(328328);
+    // this.arrOfDayAndTemp = await this.weatherService.getFiveDaysForecast(IDcity, this.cityName);
+    this.arrOfDayAndTemp = await this.weatherService.getFiveDaysForecast(328328, this.cityName);
+
 
   }
-
-  private async _filter(value: string) {
-    return await this.autoCompleteService.getAutoCompletedDaysOptions(value);
+  async _filter(value: string) {
+    this.options =  await this.autoCompleteService.getAutoCompletedDaysOptions(value);
   }
 
   async search() {
