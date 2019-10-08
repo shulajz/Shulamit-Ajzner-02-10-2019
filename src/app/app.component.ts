@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {FavoritesService} from './services/favorites.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Shulamit-Ajzner';
+  constructor(private favoritesService: FavoritesService) {
+    this.favoritesService.initBooleanOfFavoriteExists();
+  }
+
 }
+
+
+
