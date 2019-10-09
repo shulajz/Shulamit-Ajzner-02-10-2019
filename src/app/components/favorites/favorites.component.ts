@@ -9,7 +9,7 @@ import {FavoritesService} from '../../services/favorites.service';
 export class FavoritesComponent implements OnInit {
 
   constructor(private favoritesService: FavoritesService) { }
-  private arrOfFavorites: Location[] = [];
+  public arrOfFavorites: Location[] = [];
   ngOnInit() {
     this.arrOfFavorites = this.favoritesService.getFavorites();
     console.log('the arrrrr is = ' + this.arrOfFavorites);
