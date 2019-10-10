@@ -32,7 +32,8 @@ export class MainComponent implements OnInit {
     sessionStorage.setItem('cityName', this.cityName);
     this.favoriteExists = this.favoritesService.getBooleanOfFavoriteExists();
     const IDcity = await this.weatherService.getCityApiKey(this.cityName);
-    await this.getForecast(IDcity);
+    this.arrOfDayAndTemp = await this.weatherService.getFiveDaysForecast(IDcity, this.cityName);
+    this.currentTemp = await this.weatherService.getCurrentTemp(IDcity);
   }
   async search() {
     sessionStorage.setItem('cityName', this.cityName);
