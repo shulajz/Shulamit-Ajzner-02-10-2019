@@ -8,8 +8,8 @@ import {DayWeather} from '../models/dayWeather';
 export class WeatherService {
 
   constructor(private http: HttpClient) {
-    this.fiveDayForcastUrl = 'https://dataservice.accuweather.com/forecasts/v1/daily/5day/';
-    this.citySearchUrl = 'http://dataservice.accuweather.com/locations/v1/cities/search?apikey=';
+    this.fiveDayForcastUrl = 'http://dataservice.accuweather.com/forecasts/v1/daily/5day/';
+    this.citySearchUrl = 'https://dataservice.accuweather.com/locations/v1/cities/search?apikey=';
     this.currentTempUrl = 'http://dataservice.accuweather.com/currentconditions/v1/';
   }
 
