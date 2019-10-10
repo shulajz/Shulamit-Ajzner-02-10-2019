@@ -37,6 +37,7 @@ export class WeatherService {
       return res[0].Key;
     } catch (err) {
       console.log(err);
+      return null;
     }
   }
 

@@ -33,13 +33,19 @@ export class MainComponent implements OnInit {
     try {
       this.favoriteExists = this.favoritesService.getBooleanOfFavoriteExists();
       const IDcity = await this.weatherService.getCityApiKey(this.cityName);
-      this.arrOfDayAndTemp = await this.weatherService.getFiveDaysForecast(IDcity, this.cityName);
-      this.currentTemp = await this.weatherService.getCurrentTemp(IDcity);
+      if (IDcity === null) {
+        alert('oops! no such city. try again:)');
+        return;
+      }
+      await this.getForecast(IDcity);
     } catch (err) {
       console.log(err);
     }
   }
   async search() {
+    if (!(this.cityName === sessionStorage.getItem('cityName'))) {
+      this.favoriteExists = !this.favoriteExists;
+    }
     sessionStorage.setItem('cityName', this.cityName);
     try {
       const IDcity = await this.weatherService.getCityApiKey(this.cityName);
