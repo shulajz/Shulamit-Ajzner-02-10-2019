@@ -20,6 +20,10 @@ export class WeatherService {
 
   // assuming to retrieve the first city in the list
   async getCityApiKey(cityName) {
+    if (cityName.includes(' ')) {
+      const newCityName = cityName.split( ' ');
+      cityName = newCityName[0] + '%20' + newCityName[1];
+    }
     try {
       const res = await this.http.get(
         this.citySearchUrl +
