@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MainComponent} from './components/main/main.component';
@@ -12,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule, MatInputModule, MatAutocompleteModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import {MatAutocomplete} from '@angular/material';
+import {CommonModule} from '@angular/common';
 
 const appRoutes = [
   {
@@ -23,7 +22,6 @@ const appRoutes = [
   }
 
 ];
-
 
 @NgModule({
   declarations: [
@@ -42,9 +40,8 @@ const appRoutes = [
     MatInputModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
-    FormsModule,
     BrowserAnimationsModule,
-
+    CommonModule,
   ],
   providers: [WeatherService],
   bootstrap: [AppComponent]

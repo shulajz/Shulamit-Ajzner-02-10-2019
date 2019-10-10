@@ -15,7 +15,8 @@
     <div class="navbar-header">
     </div>
     <ul class="nav navbar-nav">
-      <li  routerLinkActive="active"><a routerLink="">Home</a></li>
+      <li routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:true}"><a routerLink="">Home</a></li>
       <li routerLinkActive="active"><a routerLink="/favorites">favorites</a></li>
     </ul>
   </div>

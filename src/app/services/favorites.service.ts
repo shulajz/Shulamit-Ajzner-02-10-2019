@@ -24,7 +24,6 @@ export class FavoritesService {
   removeFromFavorites(cityName) {
     const arrOfFavorites = JSON.parse(localStorage.getItem('favorites'));
     const filteredArray = arrOfFavorites.filter(item => !(item.nameOfCity === cityName));
-    // filteredArray.pop(Location);
     localStorage.setItem('favorites', JSON.stringify(filteredArray));
     this.updateBooleanOfFavoriteExists();
 
