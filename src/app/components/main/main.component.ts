@@ -30,23 +30,35 @@ export class MainComponent implements OnInit {
       this.cityName = 'tel aviv';
     }
     sessionStorage.setItem('cityName', this.cityName);
-    this.favoriteExists = this.favoritesService.getBooleanOfFavoriteExists();
-    const IDcity = await this.weatherService.getCityApiKey(this.cityName);
-    this.arrOfDayAndTemp = await this.weatherService.getFiveDaysForecast(IDcity, this.cityName);
-    this.currentTemp = await this.weatherService.getCurrentTemp(IDcity);
+    try {
+      this.favoriteExists = this.favoritesService.getBooleanOfFavoriteExists();
+      const IDcity = await this.weatherService.getCityApiKey(this.cityName);
+      this.arrOfDayAndTemp = await this.weatherService.getFiveDaysForecast(IDcity, this.cityName);
+      this.currentTemp = await this.weatherService.getCurrentTemp(IDcity);
+    } catch (err) {
+      console.log(err);
+    }
   }
   async search() {
     sessionStorage.setItem('cityName', this.cityName);
-    const IDcity = await this.weatherService.getCityApiKey(this.cityName);
-    if (IDcity === null) {
-      alert('oops! no such city. try again:)');
-      return;
+    try {
+      const IDcity = await this.weatherService.getCityApiKey(this.cityName);
+      if (IDcity === null) {
+        alert('oops! no such city. try again:)');
+        return;
+      }
+      await this.getForecast(IDcity);
+    } catch (err) {
+      console.log(err);
     }
-    await this.getForecast(IDcity);
   }
   async getForecast(IDcity) {
-    this.arrOfDayAndTemp = await this.weatherService.getFiveDaysForecast(IDcity, this.cityName);
-    this.currentTemp = await this.weatherService.getCurrentTemp(IDcity);
+    try {
+      this.arrOfDayAndTemp = await this.weatherService.getFiveDaysForecast(IDcity, this.cityName);
+      this.currentTemp = await this.weatherService.getCurrentTemp(IDcity);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   addToFavorites(cityName) {
